@@ -1,5 +1,5 @@
 import path from 'path';
-import { app, BrowserWindow, session } from 'electron';
+import { app, BrowserWindow } from 'electron';
 
 /**
  * Preload スクリプトの所在するディレクトリを取得
@@ -41,6 +41,9 @@ const createWindow = () => {
   if (process.env.NODE_ENV === 'development') {
     mainWindow.webContents.openDevTools({ mode: 'detach' });
   }
+
+  // 上のメニューバーを消す(フレームレス化)
+  mainWindow.setMenu(null);
 
   // レンダラープロセスをロード
   mainWindow.loadFile('dist/index.html');
