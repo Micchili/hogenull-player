@@ -15,6 +15,9 @@ const marqueeAnimation = keyframes`
 `
 
 const marqueeBox = css`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 372px;
     height: 27px;
     background-color: #0086AD;
@@ -32,14 +35,16 @@ const marquee = css`
     animation-iteration-count:infinite;
 `
 
-export const Player: React.FC<IProps> = (props) => {
+export const PlayerDisplay: React.FC<IProps> = (props) => {
     return(
-        <article className={marqueeBox}>
-            <p className={marquee}>
-                {props.text}
-            </p>
-        </article>
+        <>
+            <article className={marqueeBox}>
+                <p className={marquee}>
+                    {props.text}
+                </p>      
+            </article>
+        </>
     )
 }
 
-export default Player
+export default PlayerDisplay
