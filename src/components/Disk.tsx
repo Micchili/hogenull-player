@@ -15,7 +15,7 @@ const frontBox = css`
     top: -300px;
     width: 300px;
     height: 300px;
-    background: rgba(223, 242, 252, 0.3);
+    background: rgba(155, 184, 199, 0.3);
     z-index: 2;
 `
 
