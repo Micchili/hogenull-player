@@ -1,49 +1,27 @@
 import * as React from "react"
-import {css, keyframes} from "@emotion/css"
+// import {css} from "@emotion/css"
 
 export type IProps = {
-    text: string
+    videoUrl: string
 }
 
-const marqueeAnimation = keyframes`
-	from {
-        transform: translate(0%);
-    }
-	99%,to {
-        transform: translate(-100%);
-    }
-`
-
-const marqueeBox = css`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 372px;
-    height: 27px;
-    background-color: #0086AD;
-    overflow: hidden;
-`
-
-const marquee = css`
-    margin:0;
-    padding-left:360px;
-    display:inline-block;
-    white-space:nowrap;
-	animation-name:${marqueeAnimation};
-    animation-timing-function:linear;
-	animation-duration:15s;
-    animation-iteration-count:infinite;
-`
-
 export const PlayerDisplay: React.FC<IProps> = (props) => {
+    const handleChange = (url: string):string => {
+        const parser = new URL(url);
+        if (parser.hostname === "www.youtube.com") {
+            return 'https://www.youtube.com/embed/' + parser.searchParams.get("v") + '?vq=small'
+        }
+        if (parser.hostname === "www.nicovideo.jp") {
+            return 'https://embed.nicovideo.jp' + parser.pathname
+        }
+        return parser.hostname
+    }
+
     return(
         <>
-            <article className={marqueeBox}>
-                <p className={marquee}>
-                    {props.text}
-                </p>      
-            </article>
+            <iframe src={handleChange(props.videoUrl)} />
         </>
+        
     )
 }
 
