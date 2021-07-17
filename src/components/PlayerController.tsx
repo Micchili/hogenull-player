@@ -1,7 +1,7 @@
 import * as React from "react"
 import {css} from "@emotion/css"
 
-import PlayerDisplay from "../atoms/PlayerDisplay"
+import ControllerDisplay from "../atoms/ControllerDisplay"
 
 export type IProps = {
     text: string
@@ -38,8 +38,8 @@ export const PlayerController: React.FC<IProps> = (props) => {
     return(
         <div className={wrap}>
             <div className={playerDisplayWrap}>
-                <PlayerDisplay text={props.text} />
+                <ControllerDisplay text={props.text} />
             </div>
         </div>
     )
-} 
+}
